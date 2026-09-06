@@ -51,19 +51,6 @@ Open your browser and navigate to http://localhost:8000
 Register a new account.
 Login to start messaging!
 
-📁 Project Structure:
-fastapi-realtime-messenger/
-├── main.py             # Entry point, includes routers and serves frontend
-├── database.py         # SQLAlchemy database connection setup
-├── model.py            # SQLAlchemy database models (User, Message, Room, etc.)
-├── login.py            # Authentication logic (Register, Login, JWT generation)
-├── chat.py             # Core messaging logic (History, Block, Edit, Status)
-├── rooms.py            # Group/Channel creation and management endpoints
-├── profile.py          # User profile and search endpoints
-├── websocket.py        # FastAPI WebSocket manager for real-time communication
-├── .gitignore
-└── templates/
-    └── index.html      # The entire frontend UI and logic
 
     
 
