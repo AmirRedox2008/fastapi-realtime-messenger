@@ -24,8 +24,10 @@ Follow these instructions to get a copy of the project up and running on your lo
 Prerequisites
 Python 3.9+
 PostgreSQL
+
 Installation & Setup
 Clone the repository:
+
 git clone https://github.com/AmirRedox2008/fastapi-realtime-messenger.gitcd fastapi-realtime-messenger
 Create a virtual environment and activate it:
 python -m venv venv
@@ -33,20 +35,23 @@ python -m venv venv
 venv\Scripts\activate
 # On macOS/Linux:
 source venv/bin/activate
+
 Install required Python packages: 
 pip install fastapi uvicorn sqlalchemy psycopg2-binary python-jose passlib[bcrypt] httpx python-multipart jinja2
+
 Configure the Database:
 Open database.py and update the PostgreSQL connection string with your local database credentials.
 Ensure the database specified in the connection string exists.
+
 Run the Application: 
 uvicorn main:app --reload
+
 Access the App:
 Open your browser and navigate to http://localhost:8000
 Register a new account.
 Login to start messaging!
 
 📁 Project Structure:
-
 fastapi-realtime-messenger/
 ├── main.py             # Entry point, includes routers and serves frontend
 ├── database.py         # SQLAlchemy database connection setup
