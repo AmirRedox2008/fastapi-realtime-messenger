@@ -56,42 +56,23 @@ Prerequisites
 
 Installation
 
-# 1. Clonegit clone https://github.com/AmirRedox2008/fastapi-realtime-messenger.gitcd fastapi-realtime-messenger# 2. Virtual environmentpython -m venv venvsource venv/bin/activate        # Windows: venv\Scripts\activate# 3. Dependenciespip install -r requirements.txt# 4. Configure environmentcp .env.example .env# → edit .env: set DB URL and a secure SECRET_KEY#   (generate one: python -c "import secrets; print(secrets.token_hex(32))")# 5. Runuvicorn main:app --reload
+# 1. Clonegit clone https://github.com/AmirRedox2008/fastapi-realtime-messenger.gitcd fastapi-realtime-messenger# 2. Virtual environmentpython -m venv venvsource venv/bin/activate        # Windows: venv\Scripts\activate# 3. Dependenciespip install -r requirements.txt# 4. Configure environmentcp .env.example .env# edit .env: set DATABASE_URL and a secure SECRET_KEY# 5. Runuvicorn main:app --reload
 
-Open http://localhost:8000 — register, login, and start chatting!
-Interactive API docs: http://localhost:8000/docs
+Open http://localhost:8000 — register, login, and start chatting!Interactive API docs: http://localhost:8000/docs
 📁 Project Structure
-text
- 
-  
- 
- 
-├── main.py          # App entry, routers, startup
-├── websocket.py     # WebSocket endpoint & message handlers
-├── login.py         # Auth routes (register/login/me)
-├── chat.py          # DM history, block, account
-├── rooms.py         # Groups & channels CRUD
-├── profile.py       # Username, profile, search
-├── model.py         # SQLAlchemy models
-├── database.py      # DB engine & session
-└── templates/       # Frontend (single-page app)
- 
- 
+
+├── main.py          # App entry, routers, startup├── websocket.py     # WebSocket endpoint & message handlers├── login.py         # Auth routes (register/login/me)├── chat.py          # DM history, block, account├── rooms.py         # Groups & channels CRUD├── profile.py       # Username, profile, search├── model.py         # SQLAlchemy models├── database.py      # DB engine & session└── templates/       # Frontend (single-page app)
+
 🏗️ Architecture Notes
 
-     ConnectionManager keeps one active WebSocket per user
-    (new connections replace old ones automatically).
-     Messages are persisted first, then pushed — delivery status
-    (is_delivered) is updated when the recipient is online.
-     Channel posts are admin-only, enforced server-side.
+    ConnectionManager keeps one active WebSocket per user (new connections replace old ones automatically).
+    Messages are persisted first, then pushed — delivery status (is_delivered) updates when the recipient is online.
+    Channel posts are admin-only, enforced server-side.
 
 ⚠️ Known Limitations
 
-     The WebSocket state lives in-memory — currently the app must run
-    with a single uvicorn worker. Redis pub/sub is on the roadmap
-    for horizontal scaling.
-     Schema is created via Base.metadata.create_all() — no migrations yet
-    (Alembic planned).
+    WebSocket state lives in-memory — the app must run with a single uvicorn worker. Redis pub/sub is planned for horizontal scaling.
+    Schema is created via Base.metadata.create_all() — no migrations yet (Alembic planned).
 
 🗺️ Roadmap
 
