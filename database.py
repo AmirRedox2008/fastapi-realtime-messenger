@@ -5,11 +5,12 @@ from sqlalchemy.engine import URL
 
 connection = URL.create(
     drivername='postgresql',
-    host = 'your host name ',
-    port = 'your port',
-    username = 'postgres',
-    password = 'Your_Password',
-    database = 'your database name'
+    host = 'localhost',
+    port = port,
+    username = 'mydb',
+    password = 'password',
+    database = 'mydb'
+
 
 )
 

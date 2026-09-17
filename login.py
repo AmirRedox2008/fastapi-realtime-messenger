@@ -20,7 +20,7 @@ ALGORITHM = "HS256"
 class CreateUserRequest(BaseModel):
     number : str = Field(min_length=10,max_length=13)
     email : str = Field(min_length=3,max_length=30)
-    password : str
+    password : str = Field(min_length=6,max_length=20)
 
 class Token(BaseModel):
     access_token: str
